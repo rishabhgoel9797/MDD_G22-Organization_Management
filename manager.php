@@ -1,3 +1,10 @@
+<?php
+//die("hi");
+include('connection.php');
+$feedback=mysqli_query($conn,"select feedback_type,count(feedback_type) from employee_data group by feedback_type");
+$request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee_holiday group by holiday_date");
+//die($feedback);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +14,50 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartFeedback);
+      google.charts.setOnLoadCallback(drawChartEmployeeRequests);
+
+      function drawChartFeedback() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          ['Feedback Type', 'Count(feedback type)'],
+          <?php
+          while($row=mysqli_fetch_assoc($feedback))
+          {
+            echo "['".$row['feedback_type']."',".$row['count(feedback_type)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Feedback Type given by the employees'
+        };
+        var chart1 = new google.visualization.PieChart(document.getElementById('feedback_type_chart'));
+        chart1.draw(data1, options1);
+      }
+
+      function drawChartEmployeeRequests() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          ['Holiday Request Date', 'Count(Holiday Request)'],
+          <?php
+          while($row=mysqli_fetch_assoc($request_dateWise))
+          {
+            echo "['".$row['holiday_date']."',".$row['count(*)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Number of Holiday Requests Submitted by employees date wise'
+        };
+        var chart1 = new google.visualization.AreaChart(document.getElementById('holiday_date_wise'));
+        chart1.draw(data1, options1);
+      }
+      </script>
+
+
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -45,8 +96,10 @@
 <div class="col-md-6">
  <div class="panel-group">
     <div class="panel panel-primary">
-      <div class="panel-heading">Completed Targets</div>
-      <div class="panel-body text-center"></div>
+      <div class="panel-heading">Feedback Type</div>
+      <div class="panel-body text-center">
+            <div id="feedback_type_chart" ></div>
+      </div>
     </div>
 </div>
 </div>
@@ -55,7 +108,9 @@
  <div class="panel-group">
     <div class="panel panel-warning">
       <div class="panel-heading">Requests from employees</div>
-      <div class="panel-body"></div>
+      <div class="panel-body">
+        <div id="holiday_date_wise" ></div>
+      </div>
     </div>
 </div>
 </div>
