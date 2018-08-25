@@ -4,6 +4,8 @@ include('connection.php');
 $feedback=mysqli_query($conn,"select feedback_type,count(feedback_type) from employee_data group by feedback_type");
 $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee_holiday group by holiday_date");
 $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedback_type from employee_data where feedback_type='Complaint' group by employee_id");
+$approverequest=mysqli_query($conn,"select holiday_date,count(holiday_date) from employee_holiday where status='Approve' group by holiday_date");
+$declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) from employee_holiday where status='Declined' group by holiday_date");
 //die($feedback);
 ?>
 <!DOCTYPE html>
@@ -21,6 +23,8 @@ $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedbac
       google.charts.setOnLoadCallback(drawChartFeedback);
       google.charts.setOnLoadCallback(drawChartEmployeeRequests);
       google.charts.setOnLoadCallback(drawChartFeedbackTotal);
+      google.charts.setOnLoadCallback(drawChartApprove);
+      google.charts.setOnLoadCallback(drawChartDeclined);
 
       function drawChartFeedback() {
 
@@ -72,6 +76,41 @@ $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedbac
           title: 'Number of Complaints filed by particular Employee'
         };
         var chart1 = new google.visualization.BubbleChart(document.getElementById('employee_filed_complaints'));
+        chart1.draw(data1, options1);
+      }
+      function drawChartApprove() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          ['Date Of Approved Request', 'Number of Requests Approved'],
+          <?php
+          while($row=mysqli_fetch_assoc($approverequest))
+          {
+            echo "['".$row['holiday_date']."',".$row['count(holiday_date)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Number of Complaints filed by particular Employee'
+        };
+        var chart1 = new google.visualization.ColumnChart(document.getElementById('approve_request'));
+        chart1.draw(data1, options1);
+      }
+      function drawChartDeclined() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          ['Date Of Declined Request', 'Number of Requests Declined'],
+          <?php
+          while($row=mysqli_fetch_assoc($declinedrequest))
+          {
+            echo "['".$row['holiday_date']."',".$row['count(holiday_date)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Number of Complaints filed by particular Employee',
+          colors:['red']
+        };
+        var chart1 = new google.visualization.ColumnChart(document.getElementById('declined_request'));
         chart1.draw(data1, options1);
       }
       </script>
@@ -127,7 +166,9 @@ $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedbac
  <div class="panel-group">
     <div class="panel panel-danger">
       <div class="panel-heading">Number of Resignations</div>
-      <div class="panel-body"></div>
+      <div class="panel-body">
+        Line Graph
+      </div>
     </div>
 </div>
 </div>
@@ -154,7 +195,9 @@ $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedbac
  <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading">Approved Requests</div>
-      <div class="panel-body"></div>
+      <div class="panel-body">
+        <div id="approve_request" ></div>
+      </div>
     </div>
 </div>
 </div>
@@ -163,7 +206,9 @@ $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedbac
  <div class="panel-group">
     <div class="panel panel-danger">
       <div class="panel-heading">Declined Requests</div>
-      <div class="panel-body"></div>
+      <div class="panel-body">
+        <div id="declined_request" ></div>
+      </div>
     </div>
 </div>
 </div>
