@@ -10,7 +10,7 @@
 	.vis-container
 	{
 
-			max-width:1200px;
+			max-width:12px;
 			margin:0 auto;
 	}
 	.panel
