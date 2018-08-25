@@ -1,9 +1,10 @@
 <?php
 session_start();
 $id=$_SESSION["employee_id"];
+$name=$_SESSION["name"];
 if(!isset($_SESSION['employee_id']))
 {
-  $error="sorry you are not logged in or not registered with us.You will be redirected to signup page.";
+  $error="Sorry you are not logged in or not registered with us.You will be redirected to signup page.";
   echo "<script type='text/javascript'>alert('$error');window.location='login.php';</script>";
 }
 ?>
@@ -15,7 +16,7 @@ if(!isset($_SESSION['employee_id']))
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<style type="text/css">
+<style type="text/css" >
 	.vis-container
 	{
 
@@ -73,11 +74,11 @@ if(!isset($_SESSION['employee_id']))
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-                    <a href="#">Hello,<?php echo $_SESSION['ngouser'];?>
+                    <a>Welcome,<?php echo $name;?>
                         <!-- <span class="menu-icon pull-right hidden-xs showopacity "></span> -->
                     </a>
                 </li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span>LogOut</a></li>
+        <li><a href="logout.php"><span class="glyphicon glyphicon-user"></span>LogOut</a></li>
         <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
       </ul>
     </div>
@@ -97,7 +98,7 @@ if(!isset($_SESSION['employee_id']))
 <div class="col-md-4">
    <div class="panel panel-warning">
       <div class="panel-heading">Request Holiday</div>
-      <form>
+      <form method="post" action="holiday.php">
         <div class="form-group">
       <label for="holiday_date">Holiday Date</label>
       <input type="date" class="form-control" id="holiday_date" name="holiday_date">
@@ -107,7 +108,7 @@ if(!isset($_SESSION['employee_id']))
       <input type="text" class="form-control" id="reason_holiday" placeholder="Enter Reason for holiday" name="reason_holiday">
     </div>
     <div class="form-group">
-    <button type="submit" class="btn btn-primary form-control">Submit Request</button>
+    <button type="submit"  name="submit" class="btn btn-primary form-control">Submit Request</button>
     </div>
     </form>
     </div>
@@ -133,7 +134,7 @@ if(!isset($_SESSION['employee_id']))
 
    <div class="panel panel-default" style="margin-left:30%">
       <div class="panel-heading">Enter Suggestion</div>
-<form>
+<form method="post" action="feedback.php">
         <div class="form-group">
         <h3>Feedback Type</h3>
       <label for="holiday_date">Type</label>
