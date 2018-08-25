@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $_SESSION['message']='';
-$conn=mysqli_connect('localhost','root','','management');
+include('connection.php');
 
 if(!$conn)
 {
