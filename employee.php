@@ -137,8 +137,8 @@ if(!isset($_SESSION['employee_id']))
 <form method="post" action="feedback.php">
         <div class="form-group">
         <h3>Feedback Type</h3>
-      <label for="holiday_date">Type</label>
-      <select class="form-control">
+      <label  for="feedback_type">Type</label>
+      <select name="type" class="form-control">
       	<option value="Feedback">Feedback</option>
       	<option value="Complaint">Complaint</option>
       </select>
@@ -148,7 +148,19 @@ if(!isset($_SESSION['employee_id']))
       <input type="text" class="form-control" id="feed_back" placeholder="Enter Here" name="feed_back">
     </div>
     <div class="form-group">
-    <button type="submit" class="btn btn-primary form-control">Submit Feedback</button>
+    <button type="submit" name="submit" class="btn btn-primary form-control" onclick="return myFunction(this)">Submit Feedback</button>
+    <script type="text/javascript">
+      function myFunction(t)
+{
+    if($(t).prev().val())
+    {
+        alert('Adding Succesful!')
+        return true;
+    }else{
+        return false;
+    }
+}
+    </script>
     </div>
     </form>
 </div>
