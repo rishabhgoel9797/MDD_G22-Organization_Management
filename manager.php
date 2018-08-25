@@ -3,6 +3,7 @@
 include('connection.php');
 $feedback=mysqli_query($conn,"select feedback_type,count(feedback_type) from employee_data group by feedback_type");
 $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee_holiday group by holiday_date");
+$feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedback_type from employee_data where feedback_type='Complaint' group by employee_id");
 //die($feedback);
 ?>
 <!DOCTYPE html>
@@ -19,6 +20,7 @@ $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChartFeedback);
       google.charts.setOnLoadCallback(drawChartEmployeeRequests);
+      google.charts.setOnLoadCallback(drawChartFeedbackTotal);
 
       function drawChartFeedback() {
 
@@ -53,6 +55,23 @@ $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee
           title: 'Number of Holiday Requests Submitted by employees date wise'
         };
         var chart1 = new google.visualization.AreaChart(document.getElementById('holiday_date_wise'));
+        chart1.draw(data1, options1);
+      }
+      function drawChartFeedbackTotal() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          ['Complaint', 'Employee ID', 'Number Of Complaints by particular Employee'],
+          <?php
+          while($row=mysqli_fetch_assoc($feedbacktotal))
+          {
+            echo "['".$row['feedback_type']."',".$row['employee_id'].",".$row['count(employee_id)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Number of Complaints filed by particular Employee'
+        };
+        var chart1 = new google.visualization.BubbleChart(document.getElementById('employee_filed_complaints'));
         chart1.draw(data1, options1);
       }
       </script>
@@ -106,26 +125,25 @@ $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee
 
 <div class="col-md-6">
  <div class="panel-group">
-    <div class="panel panel-warning">
-      <div class="panel-heading">Requests from employees</div>
-      <div class="panel-body">
-        <div id="holiday_date_wise" ></div>
-      </div>
-    </div>
-</div>
-</div>
-
-</div>
-<div class="row">
-<div class="col-md-12">
- <div class="panel-group">
     <div class="panel panel-danger">
       <div class="panel-heading">Number of Resignations</div>
       <div class="panel-body"></div>
     </div>
 </div>
 </div>
+</div>
 
+
+<div class="col-md-12">
+ <div class="panel-group">
+    <div class="panel panel-warning">
+      <div class="panel-heading">Requests from employees</div>
+      <div class="panel-body">
+       <div id="employee_filed_complaints" ></div>
+      </div>
+    </div>
+</div>
+</div>
 
 
 </div>
@@ -157,7 +175,9 @@ $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee
  <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading">Feedbacks by date</div>
-      <div class="panel-body"></div>
+      <div class="panel-body">
+         <div id="holiday_date_wise" ></div>
+      </div>
     </div>
 </div>
 </div>
