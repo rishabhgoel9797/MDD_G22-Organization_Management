@@ -62,7 +62,7 @@ if(!isset($_SESSION['employee_id']))
       <a class="navbar-brand" href="#">Employee's View</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+      <!-- <ul class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Targets Completed<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -71,7 +71,7 @@ if(!isset($_SESSION['employee_id']))
           </ul>
         </li>
         <li><a href="#">Visualizations</a></li>
-      </ul>
+      </ul> -->
       <ul class="nav navbar-nav navbar-right">
         <li>
                     <a>Welcome,<?php echo $name;?>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['employee_id']))
 <div class="row">
 <div class="col-md-4">
    <div class="panel panel-danger">
-      <div class="panel-heading">Declined Reuests</div>
+      <div class="panel-heading">Declined Reuests(Latest 5)</div>
       <div class="panel-body">
       <table class="table table-bordered">
   <div class="table responsive">
@@ -102,7 +102,7 @@ if(!isset($_SESSION['employee_id']))
   <tbody>
       <?php
       include('connection.php');
-      $decline=mysqli_query($conn,"select * from employee_holiday where status='Declined' order by 'DESC' limit 5");
+      $decline=mysqli_query($conn,"select * from employee_holiday where status='Declined' and employee_id=$id order by 'DESC' limit 5");
       $count=mysqli_num_rows($decline);
 if(mysqli_num_rows($decline)>0)
 {
@@ -150,7 +150,7 @@ mysqli_close($conn);
 
 <div class="col-md-4">
    <div class="panel panel-primary">
-      <div class="panel-heading">Approved Requests</div>
+      <div class="panel-heading">Approved Requests(Latest 5)</div>
       <div class="panel-body">
       	  <table class="table table-bordered">
   <div class="table responsive">
@@ -163,7 +163,7 @@ mysqli_close($conn);
   <tbody>
       <?php
       include('connection.php');
-      $decline=mysqli_query($conn,"select * from employee_holiday where status='Approve' order by 'DESC' limit 5");
+      $decline=mysqli_query($conn,"select * from employee_holiday where status='Approve' and employee_id=$id order by 'DESC' limit 5");
       $count=mysqli_num_rows($decline);
 if(mysqli_num_rows($decline)>0)
 {
@@ -193,9 +193,9 @@ mysqli_close($conn);
 </div>
 
 <div class="row">
-<div class="col-md-9">
+<div class="col-md-6">
 
-   <div class="panel panel-default" style="margin-left:30%">
+   <div class="panel panel-default">
       <div class="panel-heading">Enter Suggestion</div>
 <form method="post" action="feedback.php">
         <div class="form-group">
@@ -212,6 +212,30 @@ mysqli_close($conn);
     </div>
     <div class="form-group">
     <button type="submit" class="btn btn-primary form-control">Submit Feedback</button>
+    </div>
+    </form>
+</div>
+</div>
+<div class="col-md-6">
+
+   <div class="panel panel-default">
+      <div class="panel-heading">Submit Resignation</div>
+<form method="post" action="feedback.php">
+
+        <div class="form-group">
+        <label for="resign">Resignation Reason</label>
+         <select class="form-control">
+        <option value="Environment">Environment</option>
+        <option value="Colleagues">Colleagues</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="resign_explain">Resignation Explaination</label>
+      <textarea class="form-control rounded-0" id="resign_explain" placeholder="Enter your Resignation here in detail" name="resign_explain" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+    <button type="submit" class="btn btn-danger form-control" style="margin-top: 10px;">Submit Resignation</button>
     </div>
     </form>
 </div>
