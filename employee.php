@@ -88,9 +88,43 @@ if(!isset($_SESSION['employee_id']))
 <div class="row">
 <div class="col-md-4">
    <div class="panel panel-danger">
-      <div class="panel-heading">Targets to be completed</div>
-      <div class="panel-body text-center" style=""><h4>Check List for Targets</h3><small>(Employee's List Will be displayed)</small></div>
-
+      <div class="panel-heading">Declined Reuests</div>
+      <div class="panel-body">
+      <table class="table table-bordered">
+  <div class="table responsive">
+  <thead>
+  <tr>
+  <th>Holiday Request Date</th>
+  <th>Holiday Reason</th>
+  </tr>
+  </thead>
+  <tbody>
+      <?php
+      include('connection.php');
+      $decline=mysqli_query($conn,"select * from employee_holiday where status='Declined' order by 'DESC' limit 5");
+      $count=mysqli_num_rows($decline);
+if(mysqli_num_rows($decline)>0)
+{
+  while($row=mysqli_fetch_assoc($decline))
+  {
+    
+    echo "<tr>".
+    "<td>".$row["holiday_date"]."</td>".
+    "<td>".$row["holiday_reason"]."</td>".
+    //'<td><button class="btn btn-primary btn-modal" onclick="modalname()">Donate</button></td>'.
+    "</tr>";
+  }
+}
+else
+{
+  echo "no results";
+}
+mysqli_close($conn);
+      ?>
+      </tbody>
+  </div>
+</table>
+</div>
     </div>
 </div>
 
@@ -115,13 +149,42 @@ if(!isset($_SESSION['employee_id']))
 
 <div class="col-md-4">
    <div class="panel panel-primary">
-      <div class="panel-heading">Requests(Pending or Approved)</div>
+      <div class="panel-heading">Approved Requests</div>
       <div class="panel-body">
-      	<h4>Sample Design</h4>
-      	<ul>
-      	<li>Sister's Marriage Holiday<span class="glyphicon glyphicon-ok"></span></li>
-      	<li>Cricket Match<span class="glyphicon glyphicon-remove"></span></li>
-      	</ul>
+      	  <table class="table table-bordered">
+  <div class="table responsive">
+  <thead>
+  <tr>
+  <th>Holiday Request Date</th>
+  <th>Holiday Reason</th>
+  </tr>
+  </thead>
+  <tbody>
+      <?php
+      include('connection.php');
+      $decline=mysqli_query($conn,"select * from employee_holiday where status='Approve' order by 'DESC' limit 5");
+      $count=mysqli_num_rows($decline);
+if(mysqli_num_rows($decline)>0)
+{
+  while($row=mysqli_fetch_assoc($decline))
+  {
+    
+    echo "<tr>".
+    "<td>".$row["holiday_date"]."</td>".
+    "<td>".$row["holiday_reason"]."</td>".
+    //'<td><button class="btn btn-primary btn-modal" onclick="modalname()">Donate</button></td>'.
+    "</tr>";
+  }
+}
+else
+{
+  echo "no results";
+}
+mysqli_close($conn);
+      ?>
+      </tbody>
+  </div>
+</table>
 
       </div>
     </div>
