@@ -14,10 +14,9 @@ if(!$conn)
 
     if(isset($_POST['submit']))
     {
-        $date=$_POST['holiday_date'];
-        $reason=$_POST['reason_holiday'];
-        //die($reason);
-        $sql=mysqli_query($conn,"INSERT INTO employee_holiday(employee_id,holiday_date,holiday_reason)VALUES($id,'$date','$reason')");
+        $type=$_POST['type'];
+        $feed_back=$_POST['feed_back'];
+        $sql=mysqli_query($conn,"INSERT INTO employee_data(employee_id,feedback_type,feedback_reason)VALUES($id,'$type','$feed_back')");
         
         if ($sql) 
         {
