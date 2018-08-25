@@ -1,0 +1,9 @@
+.vis-container
+		{
+			max-width:1200px;
+			margin:0 auto;
+		}
+		.panel
+		{
+			min-height:300px;
+		}
