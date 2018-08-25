@@ -38,7 +38,8 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
           ?>
         ]);
         var options1 = {
-          title: 'Feedback Type given by the employees'
+          title: 'Feedback Type given by the employees',
+          is3D:true
         };
         var chart1 = new google.visualization.PieChart(document.getElementById('feedback_type_chart'));
         chart1.draw(data1, options1);
@@ -56,7 +57,7 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
           ?>
         ]);
         var options1 = {
-          title: 'Number of Holiday Requests Submitted by employees date wise'
+          title: 'Number of Holiday Requests Submitted by employees date wise',
         };
         var chart1 = new google.visualization.AreaChart(document.getElementById('holiday_date_wise'));
         chart1.draw(data1, options1);
