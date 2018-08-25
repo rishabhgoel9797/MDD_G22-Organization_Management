@@ -29,10 +29,11 @@ if(!$conn)
     $_SESSION['password']=$pass;
    $_SESSION['message']="Login successful";
 
-     $row=mysqli_fetch_assoc($sel_id);
+     $row=mysqli_fetch_assoc($check);
   $_SESSION['employee_id']=$row["employee_id"];
+  $_SESSION['name']=$row["name"];
 
-   header("refresh:2; url=employee.php");
+   header("refresh:1; url=employee.php");
 
 
   }
@@ -68,7 +69,7 @@ if(!$conn)
         <div class="tab-content">
           
           <div class="tab-pane fade active in" id="login">
-                    <form id="login" method="post">
+                    <form id="login" method="post" autocomplete="on">
                     <div class="alert alert-error"><?=$_SESSION['message']?></div>
                     <div class="form-group">
                     <label>Email<span class="req">*</span> </label>
