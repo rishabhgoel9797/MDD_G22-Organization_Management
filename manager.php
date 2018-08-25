@@ -127,19 +127,13 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Manager's View</a>
+      <a class="navbar-brand" href="manager.php">Manager's View</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Employee's Requests<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">By Date</a></li>
-            <li><a href="#">By Names</a></li>
-            <li><a href="#">By Age</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Targets Completed By Employees</a></li>
+      <li><a href="employee_holiday.php">Holiday Requests by employees</a></li>
+      <li><a href="list_feedback.php">Feedbacks by employees</a></li>
+        <!-- <li><a href="#">Targets Completed By Employees</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span>LogOut</a></li>
