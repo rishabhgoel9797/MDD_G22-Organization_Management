@@ -2,6 +2,7 @@
 //die("hi");
 include('connection.php');
 $feedback=mysqli_query($conn,"select feedback_type,count(feedback_type) from employee_data group by feedback_type");
+$request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee_holiday group by holiday_date");
 //die($feedback);
 ?>
 <!DOCTYPE html>
@@ -16,28 +17,43 @@ $feedback=mysqli_query($conn,"select feedback_type,count(feedback_type) from emp
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChartFeedback);
+      google.charts.setOnLoadCallback(drawChartEmployeeRequests);
 
-      function drawChart() {
+      function drawChartFeedback() {
 
-        var data = google.visualization.arrayToDataTable([
+        var data1 = google.visualization.arrayToDataTable([
           ['Feedback Type', 'Count(feedback type)'],
           <?php
-
           while($row=mysqli_fetch_assoc($feedback))
           {
             echo "['".$row['feedback_type']."',".$row['count(feedback_type)']."],";
           }
           ?>
         ]);
-
-        var options = {
+        var options1 = {
           title: 'Feedback Type given by the employees'
         };
+        var chart1 = new google.visualization.PieChart(document.getElementById('feedback_type_chart'));
+        chart1.draw(data1, options1);
+      }
 
-        var chart = new google.visualization.PieChart(document.getElementById('feedback_type_chart'));
+      function drawChartEmployeeRequests() {
 
-        chart.draw(data, options);
+        var data1 = google.visualization.arrayToDataTable([
+          ['Holiday Request Date', 'Count(Holiday Request)'],
+          <?php
+          while($row=mysqli_fetch_assoc($request_dateWise))
+          {
+            echo "['".$row['holiday_date']."',".$row['count(*)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Number of Holiday Requests Submitted by employees date wise'
+        };
+        var chart1 = new google.visualization.AreaChart(document.getElementById('holiday_date_wise'));
+        chart1.draw(data1, options1);
       }
       </script>
 
@@ -93,7 +109,7 @@ $feedback=mysqli_query($conn,"select feedback_type,count(feedback_type) from emp
     <div class="panel panel-warning">
       <div class="panel-heading">Requests from employees</div>
       <div class="panel-body">
-        
+        <div id="holiday_date_wise" ></div>
       </div>
     </div>
 </div>
