@@ -1,3 +1,12 @@
+<?php
+session_start();
+$id=$_SESSION["employee_id"];
+if(!isset($_SESSION['employee_id']))
+{
+  $error="sorry you are not logged in or not registered with us.You will be redirected to signup page.";
+  echo "<script type='text/javascript'>alert('$error');window.location='login.php';</script>";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,6 +72,11 @@
         <li><a href="#">Visualizations</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+                    <a href="#">Hello,<?php echo $_SESSION['ngouser'];?>
+                        <!-- <span class="menu-icon pull-right hidden-xs showopacity "></span> -->
+                    </a>
+                </li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span>LogOut</a></li>
         <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
       </ul>
