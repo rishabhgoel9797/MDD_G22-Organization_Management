@@ -56,7 +56,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Targets Completed<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">By Datetetet</a></li>
+            <li><a href="#">By Date</a></li>
             <li><a href="#">By Title</a></li>
           </ul>
         </li>
