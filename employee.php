@@ -211,19 +211,8 @@ mysqli_close($conn);
       <input type="text" class="form-control" id="feed_back" placeholder="Enter Here" name="feed_back">
     </div>
     <div class="form-group">
-    <button type="submit" name="submit" class="btn btn-primary form-control" onclick="return myFunction(this)">Submit Feedback</button>
-    <script type="text/javascript">
-      function myFunction(t)
-{
-    if($(t).prev().val())
-    {
-        alert('Adding Succesful!')
-        return true;
-    }else{
-        return false;
-    }
-}
-    </script>
+    <button type="submit" name="submit" class="btn btn-primary form-control">Submit Feedback</button>
+
     </div>
     </form>
 </div>
