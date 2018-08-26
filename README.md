@@ -20,7 +20,7 @@ The employees of the organization will be able to apply for the holiday with the
  Manager will be able to analyse the employees activity using the graphs as shown:
  
  Feedback Type and Number of Resignations in the form of <b>Pie Chart</b> and <b>Line Chart</b><br>
-![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image2.PNG)
+![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image6.PNG)
  
  <br>Employee who has registered the complaint in the form of <b>Bubble Chart</b><br>
 ![alt text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image1.PNG)
