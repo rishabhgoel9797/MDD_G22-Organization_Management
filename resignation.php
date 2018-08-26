@@ -14,23 +14,23 @@ if(!$conn)
 
     if(isset($_POST['submit']))
     {
-        $date=$_POST['holiday_date'];
-        $reason=$_POST['reason_holiday'];
-        //die($reason);
-        $sql=mysqli_query($conn,"INSERT INTO employee_holiday(employee_id,holiday_date,holiday_reason)VALUES($id,'$date','$reason')");
+        $resign=$_POST['resign'];
+        $resign_explain=$_POST['resign_explain'];
+       // die($resign);
+        $sql=mysqli_query($conn,"INSERT INTO employee_resignation(employee_id,reason,explanation)VALUES($id,'$resign','$resign_explain')");
         
         if ($sql) 
         {
-            
-            $error="Holiday request sent!!";
+            $error="Resignation request sent!!";
            echo "<script type='text/javascript'>alert('$error');window.location='employee.php';</script>";
+            //echo "Successful";
         }
         else
         {
            
-            
-            $error="Holiday request not sent!!";
+            $error="Resignation request not sent!!";
            echo "<script type='text/javascript'>alert('$error');window.location='employee.php';</script>";
+           // echo "not";
         }
     }
 ?>

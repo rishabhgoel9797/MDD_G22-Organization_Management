@@ -20,12 +20,16 @@ if(!$conn)
         
         if ($sql) 
         {
-            $_SESSION['message']="Request Submitted";
+            
+            $error="Feedback request sent!!";
+           echo "<script type='text/javascript'>alert('$error');window.location='employee.php';</script>";
         }
         else
         {
            
-            $_SESSION['message']="Request Not Submitted";
+            
+            $error="Feedback request not sent!!";
+           echo "<script type='text/javascript'>alert('$error');window.location='employee.php';</script>";
         }
     }
 ?>

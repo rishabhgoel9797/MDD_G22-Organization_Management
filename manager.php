@@ -6,6 +6,7 @@ $request_dateWise=mysqli_query($conn,"select holiday_date,count(*) from employee
 $feedbacktotal=mysqli_query($conn,"select employee_id,count(employee_id),feedback_type from employee_data where feedback_type='Complaint' group by employee_id");
 $approverequest=mysqli_query($conn,"select holiday_date,count(holiday_date) from employee_holiday where status='Approve' group by holiday_date");
 $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) from employee_holiday where status='Declined' group by holiday_date");
+$resignation=mysqli_query($conn,"select reason,count(reason) from employee_resignation group by reason");
 //die($feedback);
 ?>
 <!DOCTYPE html>
@@ -25,6 +26,7 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
       google.charts.setOnLoadCallback(drawChartFeedbackTotal);
       google.charts.setOnLoadCallback(drawChartApprove);
       google.charts.setOnLoadCallback(drawChartDeclined);
+      google.charts.setOnLoadCallback(drawChartResign);
 
       function drawChartFeedback() {
 
@@ -42,6 +44,23 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
           is3D:true
         };
         var chart1 = new google.visualization.PieChart(document.getElementById('feedback_type_chart'));
+        chart1.draw(data1, options1);
+      }
+      function drawChartResign() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          ['Resignation Reason', 'Count(Resignation Reason)'],
+          <?php
+          while($row=mysqli_fetch_assoc($resignation))
+          {
+            echo "['".$row['reason']."',".$row['count(reason)']."],";
+          }
+          ?>
+        ]);
+        var options1 = {
+          title: 'Reasons for Resignation due to different reasons',
+        };
+        var chart1 = new google.visualization.LineChart(document.getElementById('resignation'));
         chart1.draw(data1, options1);
       }
 
@@ -134,12 +153,10 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
       <ul class="nav navbar-nav">
       <li><a href="employee_holiday.php">Holiday Requests by employees</a></li>
       <li><a href="list_feedback.php">Feedbacks by employees</a></li>
+      <li><a href="resignationview.php">Resignation By Employees</a></li>
         <!-- <li><a href="#">Targets Completed By Employees</a></li> -->
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span>LogOut</a></li>
-        <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-      </ul>
+     
     </div>
   </div>
 </nav>
@@ -162,7 +179,7 @@ $declinedrequest=mysqli_query($conn,"select holiday_date,count(holiday_date) fro
     <div class="panel panel-danger">
       <div class="panel-heading">Number of Resignations</div>
       <div class="panel-body">
-        Line Graph
+         <div id="resignation" ></div>
       </div>
     </div>
 </div>

@@ -135,11 +135,11 @@ mysqli_close($conn);
       <form method="post" action="holiday.php">
         <div class="form-group">
       <label for="holiday_date">Holiday Date</label>
-      <input type="date" class="form-control" id="holiday_date" name="holiday_date">
+      <input type="date" class="form-control" id="holiday_date" name="holiday_date" required="">
     </div>
     <div class="form-group">
       <label for="reason_holiday">Reason</label>
-      <input type="text" class="form-control" id="reason_holiday" placeholder="Enter Reason for holiday" name="reason_holiday">
+      <input type="text" class="form-control" id="reason_holiday" placeholder="Enter Reason for holiday" name="reason_holiday" required="">
     </div>
     <div class="form-group">
     <button type="submit"  name="submit" class="btn btn-primary form-control">Submit Request</button>
@@ -208,7 +208,7 @@ mysqli_close($conn);
     </div>
     <div class="form-group">
       <label for="feed_back">Feedback / Complaint</label>
-      <input type="text" class="form-control" id="feed_back" placeholder="Enter Here" name="feed_back">
+      <input type="text" class="form-control" id="feed_back" placeholder="Enter Here" name="feed_back" required="">
     </div>
     <div class="form-group">
     <button type="submit" name="submit" class="btn btn-primary form-control">Submit Feedback</button>
@@ -221,11 +221,11 @@ mysqli_close($conn);
 
    <div class="panel panel-default">
       <div class="panel-heading">Submit Resignation</div>
-<form method="post" action="feedback.php">
+<form method="post" action="resignation.php">
 
         <div class="form-group">
         <label for="resign">Resignation Reason</label>
-         <select class="form-control">
+         <select name="resign" id="resign" class="form-control">
         <option value="Environment">Environment</option>
         <option value="Colleagues">Colleagues</option>
         <option value="Other">Other</option>
@@ -233,10 +233,10 @@ mysqli_close($conn);
     </div>
     <div class="form-group">
       <label for="resign_explain">Resignation Explaination</label>
-      <textarea class="form-control rounded-0" id="resign_explain" placeholder="Enter your Resignation here in detail" name="resign_explain" rows="3"></textarea>
+      <textarea class="form-control rounded-0" id="resign_explain" placeholder="Enter your Resignation here in detail" name="resign_explain" rows="3" required=""></textarea>
     </div>
     <div class="form-group">
-    <button type="submit" class="btn btn-danger form-control" style="margin-top: 10px;">Submit Resignation</button>
+    <button type="submit" name="submit" class="btn btn-danger form-control" style="margin-top: 10px;">Submit Resignation</button>
     </div>
     </form>
 </div>
