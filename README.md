@@ -15,8 +15,12 @@ The employees of the organization will be able to apply for the holiday with the
  </ul>
   <li>Resignation</li>
  </ul>
- 
+ Manager will be able to analyse the employees activity using the graphs as shown:
+1.
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image5.PNG)
+2.
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image2.PNG)
+3.
 ![alt text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image1.PNG)
+4.
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image3.PNG)
