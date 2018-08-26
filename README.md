@@ -17,11 +17,14 @@ The employees of the organization will be able to apply for the holiday with the
  </ul>
  Manager will be able to analyse the employees activity using the graphs as shown:
  
- Feedback Type and Number of Resignations in the form of <b>Pie Chart</b> and <b>Line Chart</b>
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image5.PNG)
- <br>Employee who has registered the complaint in the form of <b>Bubble Chart</b>
+ 
+ Feedback Type and Number of Resignations in the form of <b>Pie Chart</b> and <b>Line Chart</b>
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image2.PNG)
- <br>Approved and Declined Holiday Requests in the form of <b>Bar Charts</b>
+ 
+ <br>Employee who has registered the complaint in the form of <b>Bubble Chart</b>
 ![alt text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image1.PNG)
+
+<br>Approved and Declined Holiday Requests in the form of <b>Bar Charts</b>
  <br>Date Wise holiday requests in the form of <b>Area Chart</b>
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image3.PNG)
