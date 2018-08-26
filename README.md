@@ -1,5 +1,6 @@
 # MDD_G22-Organization_Management_Project
-This panel will help both the manager and employee performing their task easily
+The objective of this project is to provide an organization/company a platform which helps it in a proper management of details of its stakeholders with the help of smart data analytics. This will help the manager or the head of any department within the organization to keep the track of all the activities of its employees. Manager will be able to analyze the number of resignation happening in his department.  
+
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image4.PNG)
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image5.PNG)
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image2.PNG)
