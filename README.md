@@ -1,5 +1,5 @@
 # MDD_G22-Organization_Management_Project
-The objective of this project is to provide an organization/company a platform which helps it in a proper management of details of its stakeholders with the help of smart data analytics. This will help the manager or the head of any department within the organization to keep the track of all the activities of its employees. Manager will be able to analyze the number of resignation happening in his department.  
+The objective of this project is to provide an organization/company a platform which helps it in a proper management of details of its stakeholders with the help of smart data visualization. This will help the manager or the head of any department within the organization to keep the track of all the activities of its employees. Manager will be able to analyze the number of resignation happening in his department.  
 
 The employees of the organization will be able to apply for the holiday with the reason and will be able to see their recent 5 holiday request status. Employees will also be able to apply for resignation with the reason.
 
