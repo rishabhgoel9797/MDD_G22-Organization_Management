@@ -6,10 +6,10 @@ The employees of the organization will be able to apply for the holiday with the
 
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image4.PNG)
 
-<b>Feedback and Resignation
+<b>Feedback and Resignation</b>
  - Suggestions
-  -Feedbacks
-  -Complaints
+   *Feedbacks
+   *Complaints
  - Resignation
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image5.PNG)
 ![alt_text](https://raw.githubusercontent.com/rishabhgoel9797/MDD_G22-Organization_Management_Project/master/image2.PNG)
