@@ -89,7 +89,7 @@ if(!isset($_SESSION['employee_id']))
 <div class="row">
 <div class="col-md-4">
    <div class="panel panel-danger">
-      <div class="panel-heading">Declined Reuests(Latest 5)</div>
+      <div class="panel-heading">Declined Requests(Latest 5)</div>
       <div class="panel-body">
       <table class="table table-bordered">
   <div class="table responsive">
