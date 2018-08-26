@@ -231,7 +231,7 @@ $resignation=mysqli_query($conn,"select reason,count(reason) from employee_resig
 <div class="col-md-12">
  <div class="panel-group">
     <div class="panel panel-default">
-      <div class="panel-heading">Feedbacks by date</div>
+      <div class="panel-heading">Holiday Requests by date</div>
       <div class="panel-body">
          <div id="holiday_date_wise" ></div>
       </div>
